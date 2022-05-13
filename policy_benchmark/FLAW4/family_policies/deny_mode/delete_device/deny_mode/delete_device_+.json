@@ -1,0 +1,106 @@
+{
+	"Expected": {
+		"type": 0,
+		"NotReceive": [
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/cmd",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/status",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/get/accepted",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/update/accepted"
+		],
+		"NotPublish": [
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/cmd",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/status",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/get/accepted",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/update/accepted"
+		]
+	},
+	"Statement1": [
+		{
+			"Action": "iot:Publish",
+			"Effect": "Allow",
+			"Resource": [
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/update",
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/get",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/update",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/get"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Allow",
+			"Resource": [
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/+",
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/+/+",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/+/+",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/+"
+			]
+		},
+		{
+			"Action": "iot:Receive",
+			"Effect": "Deny",
+			"Resource": [
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/cmd",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/cmd"
+			]
+		},
+		{
+			"Action": "iot:Receive",
+			"Effect": "Allow",
+			"Resource": "*"
+		}
+	],
+	"Statement2": [
+		{
+			"Action": "iot:Publish",
+			"Effect": "Allow",
+			"Resource": [
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/update",
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/get",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/update",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/get"
+			]
+		},
+		{
+			"Action": "iot:Publish",
+			"Effect": "Deny",
+			"Resource": [
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/update",
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/get"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Allow",
+			"Resource": [
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/+",
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/+/+",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/+/+",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/+"
+			]
+		},
+		{
+			"Action": "iot:Receive",
+			"Effect": "Deny",
+			"Resource": [
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/cmd",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/cmd"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Deny",
+			"Resource": [
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/+",
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/+/+",
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/status",
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/get/accepted",
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/update/accepted"
+			]
+		},
+		{
+				"Action": "iot:Receive",
+				"Effect": "Allow",
+				"Resource": "*"
+			}
+		]
+	}

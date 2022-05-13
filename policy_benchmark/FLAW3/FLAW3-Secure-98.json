@@ -1,0 +1,40 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:client/${!iot:Certificate.Subject.CommonName}"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish",
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/things/${!iot:ClientId}/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Subscribe",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/things/${!iot:ClientId}/*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/${!iot:Certificate.Subject.CommonName}",
+            "topic/things/${!iot:ClientId}/*"
+        ],
+        "NotReceive": [
+            "client/${!iot:Certificate.Subject.CommonName}",
+            "topic/things/${!iot:ClientId}/*"
+        ],
+        "type": 0
+    }
+}

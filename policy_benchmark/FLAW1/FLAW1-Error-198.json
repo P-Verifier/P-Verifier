@@ -1,0 +1,34 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/messages"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "*",
+            "topic/messages"
+        ],
+        "NotReceive": [
+            "*",
+            "topic/messages"
+        ],
+        "type": 0
+    }
+}

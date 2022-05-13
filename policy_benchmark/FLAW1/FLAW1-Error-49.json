@@ -1,0 +1,57 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Publish",
+            "Resource": "arn:aws:iot:<region>:<account_id>:topic/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iotevents:BatchPutMessage",
+            "Resource": "arn:aws:iotevents:<region>:<account_id>:input/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iotsitewise:BatchPutAssetPropertyValue",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "dynamodb:PutItem",
+            "Resource": "arn:aws:dynamodb:<region>:<account_id>:table/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "firehose:PutRecord",
+                "firehose:PutRecordBatch"
+            ],
+            "Resource": "arn:aws:firehose:<region>:<account_id>:deliverystream/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "lambda:InvokeFunction",
+            "Resource": "arn:aws:lambda:<region>:<account_id>:function:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "sns:Publish",
+            "Resource": "arn:aws:sns:<region>:<account_id>:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "sqs:SendMessage",
+            "Resource": "arn:aws:sqs:<region>:<account_id>:*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/*"
+        ],
+        "NotReceive": [
+            "topic/*"
+        ],
+        "type": 0
+    }
+}

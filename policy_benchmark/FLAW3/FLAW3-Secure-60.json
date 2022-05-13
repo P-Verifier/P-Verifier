@@ -1,0 +1,37 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:client/client1",
+                "arn:aws:iot:us-east-1:123456789012:client/client2"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:client/${iot:Connection.Thing.ThingName}"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/${iot:Connection.Thing.ThingName}",
+            "client/client1",
+            "client/client2"
+        ],
+        "NotReceive": [
+            "client/${iot:Connection.Thing.ThingName}",
+            "client/client1",
+            "client/client2"
+        ],
+        "type": 0
+    }
+}

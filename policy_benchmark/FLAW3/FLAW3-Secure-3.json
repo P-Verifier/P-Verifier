@@ -1,0 +1,61 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:topic/bme680/temperature",
+                "arn:aws:iot:your-region:your-aws-account:topic/bme680/pressure",
+                "arn:aws:iot:your-region:your-aws-account:topic/bme680/humidity",
+                "arn:aws:iot:your-region:your-aws-account:topic/bme680/actions"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:topic/bme680/actions"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:topicfilter/bme680/actions"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:client/simple-subscribing"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/simple-subscribing",
+            "topic/bme680/actions",
+            "topic/bme680/humidity",
+            "topic/bme680/temperature",
+            "topic/bme680/pressure"
+        ],
+        "NotReceive": [
+            "client/simple-subscribing",
+            "topic/bme680/actions",
+            "topic/bme680/humidity",
+            "topic/bme680/temperature",
+            "topic/bme680/pressure"
+        ],
+        "type": 0
+    }
+}

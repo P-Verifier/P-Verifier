@@ -1,0 +1,35 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": [
+                "arn:aws:iot:us-east-1:1234567890:client/*${cognito-identity.amazonaws.com:sub}*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:1234567890:topicfilter/${iot:ClientId}"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish",
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:1234567890:topic/${iot:ClientId}"
+            ]
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false
+    }
+}

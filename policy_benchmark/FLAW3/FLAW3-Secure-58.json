@@ -1,0 +1,45 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:client/client1",
+                "arn:aws:iot:us-east-1:123456789012:client/client2",
+                "arn:aws:iot:us-east-1:123456789012:client/client3"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:topic/admin"
+            ],
+            "Condition": {
+                "ForAnyValue:StringEquals": {
+                    "iot:Certificate.Subject.CommonName.List": "Administrator"
+                }
+            }
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/client1",
+            "client/client2",
+            "client/client3",
+            "topic/admin"
+        ],
+        "NotReceive": [
+            "client/client1",
+            "client/client2",
+            "client/client3",
+            "topic/admin"
+        ],
+        "type": 0
+    }
+}

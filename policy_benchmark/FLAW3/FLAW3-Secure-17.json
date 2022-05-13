@@ -1,0 +1,52 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "iot:Connect",
+            "Condition": {
+                "ForAllValues:StringEquals": {
+                    "iot:Certificate.Subject.CommonName": "${iot:Connection.Thing.ThingName}"
+                }
+            },
+            "Effect": "Allow",
+            "Resource": "arn:aws:iot:us-east-2:1234567890:client/${!iot:Connection.Thing.ThingName}"
+        },
+        {
+            "Action": "iot:Publish",
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/demofleet/${!iot:Connection.Thing.ThingName}*",
+                "arn:aws:iot:us-east-2:1234567890:topic/$aws/things/${!iot:Connection.Thing.ThingName}*"
+            ]
+        },
+        {
+            "Action": "iot:Subscribe",
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/demofleet/${!iot:Connection.Thing.ThingName}*",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/${!iot:Connection.Thing.ThingName}*"
+            ]
+        },
+        {
+            "Action": "iot:Receive",
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/demofleet/${!iot:Connection.Thing.ThingName}*",
+                "arn:aws:iot:us-east-2:1234567890:topic/$aws/things/${!iot:Connection.Thing.ThingName}*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/demofleet/${!iot:Connection.Thing.ThingName}*",
+            "client/${!iot:Connection.Thing.ThingName}",
+            "topic/$aws/things/${!iot:Connection.Thing.ThingName}*"
+        ],
+        "NotReceive": [
+            "topic/demofleet/${!iot:Connection.Thing.ThingName}*",
+            "client/${!iot:Connection.Thing.ThingName}",
+            "topic/$aws/things/${!iot:Connection.Thing.ThingName}*"
+        ],
+        "type": 0
+    }
+}

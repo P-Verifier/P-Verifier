@@ -1,0 +1,61 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:topic/my_sensor/reading",
+                "arn:aws:iot:your-region:your-aws-account:topic/$aws/things/my_sensor/shadow/update"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:client/my_sensor"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:topicfilter/$aws/things/my_sensor/shadow/update/accepted",
+                "arn:aws:iot:your-region:your-aws-account:topicfilter/$aws/things/my_sensor/shadow/update/rejected"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:topic/$aws/things/my_sensor/shadow/update/accepted",
+                "arn:aws:iot:your-region:your-aws-account:topic/$aws/things/my_sensor/shadow/update/rejected"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/my_sensor/reading",
+            "topic/$aws/things/my_sensor/shadow/update/accepted",
+            "client/my_sensor",
+            "topic/$aws/things/my_sensor/shadow/update/rejected",
+            "topic/$aws/things/my_sensor/shadow/update"
+        ],
+        "NotReceive": [
+            "topic/my_sensor/reading",
+            "topic/$aws/things/my_sensor/shadow/update/accepted",
+            "client/my_sensor",
+            "topic/$aws/things/my_sensor/shadow/update/rejected",
+            "topic/$aws/things/my_sensor/shadow/update"
+        ],
+        "type": 0
+    }
+}

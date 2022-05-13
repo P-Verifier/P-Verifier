@@ -1,0 +1,71 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": [
+                "arn:aws:iot:<b>region</b>:<b>account</b>:client/<b>thingname</b>",
+                "arn:aws:iot:<b>region</b>:<b>account</b>:client/test-*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Publish",
+            "Resource": [
+                "arn:aws:iot:<b>region</b>:<b>account</b>:topic/test/dc/pubtopic",
+                "arn:aws:iot:<b>region</b>:<b>account</b>:topic/$aws/events/job/*",
+                "arn:aws:iot:<b>region</b>:<b>account</b>:topic/$aws/events/jobExecution/*",
+                "arn:aws:iot:<b>region</b>:<b>account</b>:topic/$aws/things/<b>thingname</b>/jobs/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Subscribe",
+            "Resource": [
+                "arn:aws:iot:<b>region</b>:<b>account</b>:topicfilter/test/dc/subtopic",
+                "arn:aws:iot:<b>region</b>:<b>account</b>:topic/$aws/events/jobExecution/*",
+                "arn:aws:iot:<b>region</b>:<b>account</b>:topicfilter/$aws/things/<b>thingname</b>/jobs/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Receive",
+            "Resource": [
+                "arn:aws:iot:<b>region</b>:<b>account</b>:topic/test/dc/subtopic",
+                "arn:aws:iot:<b>region</b>:<b>account</b>:topic/$aws/things/<b>thingname</b>/jobs/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:DescribeJobExecution",
+                "iot:GetPendingJobExecutions",
+                "iot:StartNextPendingJobExecution",
+                "iot:UpdateJobExecution"
+            ],
+            "Resource": "arn:aws:iot:<b>region</b>:<b>account</b>:topic/$aws/things/<b>thingname</b>"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/<b>thingname</b>",
+            "topic/test/dc/pubtopic",
+            "client/test-*",
+            "topic/$aws/events/jobExecution/*",
+            "topic/$aws/events/job/*",
+            "topic/test/dc/subtopic",
+            "topic/$aws/things/<b>thingname</b>/jobs/*"
+        ],
+        "NotReceive": [
+            "client/<b>thingname</b>",
+            "topic/test/dc/pubtopic",
+            "client/test-*",
+            "topic/$aws/events/jobExecution/*",
+            "topic/$aws/events/job/*",
+            "topic/test/dc/subtopic",
+            "topic/$aws/things/<b>thingname</b>/jobs/*"
+        ],
+        "type": 0
+    }
+}

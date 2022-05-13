@@ -1,0 +1,50 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "MQTTConnect",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:iot:us-east-2:1234567890:client/${iot:Certificate.Subject.CommonName}"
+        },
+        {
+            "Sid": "MQTTPublisher",
+            "Action": [
+                "iot:Subscribe",
+                "iot:Receive"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/loadtest/#"
+            ]
+        },
+        {
+            "Sid": "MQTTWrite",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/loadtest/${iot:Certificate.Subject.CommonName}",
+                "arn:aws:iot:us-east-2:1234567890:topic/loadtest"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/loadtest/#",
+            "topic/loadtest",
+            "topic/loadtest/${iot:Certificate.Subject.CommonName}",
+            "client/${iot:Certificate.Subject.CommonName}"
+        ],
+        "NotReceive": [
+            "topic/loadtest/#",
+            "topic/loadtest",
+            "topic/loadtest/${iot:Certificate.Subject.CommonName}",
+            "client/${iot:Certificate.Subject.CommonName}"
+        ],
+        "type": 0
+    }
+}

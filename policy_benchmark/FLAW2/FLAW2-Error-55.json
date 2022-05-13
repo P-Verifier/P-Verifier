@@ -1,0 +1,26 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:*",
+                "greengrass:*",
+                "iot:*",
+                "s3:*",
+                "apigateway:*",
+                "codedeploy:*",
+                "lambda:*",
+                "codepipeline:*",
+                "iotanalytics:*",
+                "codebuild:*"
+            ],
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false,
+        "type": 0
+    }
+}

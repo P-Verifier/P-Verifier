@@ -1,0 +1,50 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:client/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Publish",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/${AppPrefix}/out"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:AWS::Region:AWS::AccountId:topicfilter/AppPrefix/in/${iot:ClientId}"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:AWS::Region:AWS::AccountId:topic/AppPrefix/in/${iot:ClientId}"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/*",
+            "arn:aws:iot:AWS::Region:AWS::AccountId:topicfilter/AppPrefix/in/${iot:ClientId}",
+            "topic/${AppPrefix}/out"
+        ],
+        "NotReceive": [
+            "client/*",
+            "arn:aws:iot:AWS::Region:AWS::AccountId:topicfilter/AppPrefix/in/${iot:ClientId}",
+            "topic/${AppPrefix}/out"
+        ],
+        "type": 0
+    }
+}

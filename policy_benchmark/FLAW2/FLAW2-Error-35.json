@@ -1,0 +1,28 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iotsitewise:BatchPutAssetPropertyValue",
+                "sns:Publish",
+                "firehose:PutRecord",
+                "lambda:InvokeFunction",
+                "sqs:SendMessage",
+                "firehose:PutRecordBatch",
+                "iot:Publish",
+                "iotevents:DescribeLoggingOptions",
+                "iotevents:ListDetectorModels",
+                "iotevents:PutLoggingOptions",
+                "iotevents:ListInputs",
+                "sso-directory:DescribeUser"
+            ],
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false,
+        "type": 0
+    }
+}

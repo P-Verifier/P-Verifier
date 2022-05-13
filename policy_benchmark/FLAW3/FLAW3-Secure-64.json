@@ -1,0 +1,32 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account:topicfilter/$aws/things/thingName/shadow/delete/accepted"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account:topic/$aws/things/thingName/shadow/delete/accepted"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/thingName/shadow/delete/accepted"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/thingName/shadow/delete/accepted"
+        ],
+        "type": 0
+    }
+}

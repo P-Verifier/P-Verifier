@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:CreateKeysAndCertificate",
+                "iot:DeleteCertificate",
+                "iot:UpdateCertificate",
+                "iot:DescribeEndpoint",
+                "iot:AttachPolicy",
+                "iot:DetachPolicy"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false,
+        "type": 0
+    }
+}

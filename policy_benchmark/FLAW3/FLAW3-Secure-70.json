@@ -1,0 +1,34 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:client/client1"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:topicfilter/my/topic"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/my/topic",
+            "client/client1"
+        ],
+        "NotReceive": [
+            "topic/my/topic",
+            "client/client1"
+        ],
+        "type": 0
+    }
+}

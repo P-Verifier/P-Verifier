@@ -1,0 +1,54 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-west-2:57EXAMPLE833:client/PubSubTestThing"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-west-2:57EXAMPLE833:topic/test/dc/pubtopic"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-west-2:57EXAMPLE833:topicfilter/test/dc/subtopic"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-west-2:57EXAMPLE833:topic/test/dc/subtopic"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/test/dc/pubtopic",
+            "topic/test/dc/subtopic",
+            "client/PubSubTestThing"
+        ],
+        "NotReceive": [
+            "topic/test/dc/pubtopic",
+            "topic/test/dc/subtopic",
+            "client/PubSubTestThing"
+        ],
+        "type": 0
+    }
+}

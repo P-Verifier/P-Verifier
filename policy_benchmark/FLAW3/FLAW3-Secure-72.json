@@ -1,0 +1,34 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:topic/${cognito-identity.amazonaws.com:sub}"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:client/${cognito-identity.amazonaws.com:sub}"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/${cognito-identity.amazonaws.com:sub}",
+            "topic/${cognito-identity.amazonaws.com:sub}"
+        ],
+        "NotReceive": [
+            "client/${cognito-identity.amazonaws.com:sub}",
+            "topic/${cognito-identity.amazonaws.com:sub}"
+        ],
+        "type": 0
+    }
+}

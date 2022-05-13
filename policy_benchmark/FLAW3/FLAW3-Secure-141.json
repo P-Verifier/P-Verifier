@@ -1,0 +1,39 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:iot:*:*:topicfilter/${iot:Connection.Thing.Attributes[stage]}/${iot:Connection.Thing.Attributes[tenantId]}/m/*"
+            ]
+        },
+        {
+            "Action": [
+                "iot:Publish"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:iot:*:*:topic/${iot:Connection.Thing.Attributes[stage]}/${iot:Connection.Thing.Attributes[tenantId]}/m/*"
+            ]
+        },
+        {
+            "Action": [
+                "iot:Receive"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/${iot:Connection.Thing.Attributes[stage]}/${iot:Connection.Thing.Attributes[tenantId]}/m/*"
+        ],
+        "NotReceive": [
+            "topic/${iot:Connection.Thing.Attributes[stage]}/${iot:Connection.Thing.Attributes[tenantId]}/m/*"
+        ],
+        "type": 0
+    }
+}

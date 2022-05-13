@@ -1,0 +1,59 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/chat/in/*",
+                "arn:aws:iot:us-east-2:1234567890:topic/chat/pub/*"
+            ]
+        },
+        {
+            "Sid": "Stmt1500489818000",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:Query"
+            ],
+            "Resource": [
+                "arn:aws:dynamodb:us-east-2:1234567890:table/chat"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kinesis:DescribeStream",
+                "kinesis:GetShardIterator",
+                "kinesis:GetRecords",
+                "kinesis:ListStreams"
+            ],
+            "Resource": [
+                "arn:aws:kinesis:us-east-2:1234567890:stream/chat"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/chat/pub/*",
+            "topic/chat/in/*",
+            "*"
+        ],
+        "NotReceive": [
+            "topic/chat/pub/*",
+            "topic/chat/in/*",
+            "*"
+        ],
+        "type": 0
+    }
+}

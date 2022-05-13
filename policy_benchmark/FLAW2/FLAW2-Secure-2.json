@@ -1,0 +1,42 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": "arn:aws:iot:*:*:topic/state"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iotevents:BatchPutMessage"
+            ],
+            "Resource": "arn:aws:iotevents:*:*:input/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:PutMetricFilter",
+                "logs:PutRetentionPolicy"
+            ],
+            "Resource": [
+                "arn:aws:logs:*:*:*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/state"
+        ],
+        "NotReceive": [
+            "topic/state"
+        ],
+        "DangerousAPI": false,
+        "type": 0
+    }
+}

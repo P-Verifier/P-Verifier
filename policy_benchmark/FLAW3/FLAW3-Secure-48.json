@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:DeleteThingShadow",
+                "iot:GetThingShadow",
+                "iot:UpdateThingShadow",
+                "iot:DescribeJobExecution",
+                "iot:GetPendingJobExecutions",
+                "iot:StartNextPendingJobExecution",
+                "iot:UpdateJobExecution"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account-id:/thing/MyThing1",
+                "arn:aws:iot:region:account-id:/thing/MyThing2"
+            ]
+        }
+    ],
+    "Expected": {
+        "Public": false,
+        "type": 0
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": "arn:aws:iot:AWS::Region:AWS::AccountId:topicfilter/room/public/*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "arn:aws:iot:AWS::Region:AWS::AccountId:topicfilter/room/public/*"
+        ],
+        "NotReceive": [
+            "arn:aws:iot:AWS::Region:AWS::AccountId:topicfilter/room/public/*"
+        ],
+        "type": 0
+    }
+}

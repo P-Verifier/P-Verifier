@@ -1,0 +1,91 @@
+{
+	"Expected": {
+		"type": 0,
+		"NotReceive": [
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/cmd",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/status",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/get/accepted",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/update/accepted"
+		],
+		"NotPublish": [
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/update",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/get",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/cmd",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/status",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/get/accepted",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/update/accepted"
+		]
+	},
+	"Statement1": [
+		{
+			"Action": "iot:Publish",
+			"Effect": "Allow",
+			"Resource": [
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/update",
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/get",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/update",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/get",
+				"topic/qmrhpcwzbiklgdxyoxkdlmurbhtaljzc/update",
+				"topic/qmrhpcwzbiklgdxyoxkdlmurbhtaljzc/get"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Allow",
+			"Resource": [
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/#",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/#",
+				"topicfilter/qmrhpcwzbiklgdxyoxkdlmurbhtaljzc/#"
+			]
+		},
+		{
+			"Action": "iot:Receive",
+			"Effect": "Allow",
+			"Resource": "*"
+		}
+	],
+	"Statement2": [
+		{
+			"Action": "iot:Publish",
+			"Effect": "Allow",
+			"Resource": [
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/update",
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/get",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/update",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/get",
+				"topic/qmrhpcwzbiklgdxyoxkdlmurbhtaljzc/update",
+				"topic/qmrhpcwzbiklgdxyoxkdlmurbhtaljzc/get"
+			]
+		},
+		{
+			"Action": "iot:Publish",
+			"Effect": "Deny",
+			"Resource": [
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/update",
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/get"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Allow",
+			"Resource": [
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/#",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/#",
+				"topicfilter/qmrhpcwzbiklgdxyoxkdlmurbhtaljzc/#"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Deny",
+			"Resource": [
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/*"
+			]
+		},
+		{
+			"Action": "iot:Receive",
+			"Effect": "Allow",
+			"Resource": "*"
+		}
+	]
+
+}

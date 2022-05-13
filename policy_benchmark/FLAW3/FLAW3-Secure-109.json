@@ -1,0 +1,16 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": "arn:aws:iot:AWS::Region:AWS::AccountId:topic/room/public/*"
+        }
+    ],
+    "Expected": {
+        "Public": false,
+        "type": 0
+    }
+}

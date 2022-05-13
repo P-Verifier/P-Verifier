@@ -1,0 +1,69 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/things/ThingOne/shadow/get",
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/things/ThingOne/shadow/update"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/things/ThingOne/shadow/get/accepted",
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/things/ThingOne/shadow/get/rejected",
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/things/ThingOne/shadow/update/accepted",
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/things/ThingOne/shadow/update/rejected",
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/things/ThingOne/shadow/update/delta"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:111003490208:topicfilter/$aws/things/ThingOne/shadow/get/accepted",
+                "arn:aws:iot:us-east-2:111003490208:topicfilter/$aws/things/ThingOne/shadow/get/rejected",
+                "arn:aws:iot:us-east-2:111003490208:topicfilter/$aws/things/ThingOne/shadow/update/accepted",
+                "arn:aws:iot:us-east-2:111003490208:topicfilter/$aws/things/ThingOne/shadow/update/rejected",
+                "arn:aws:iot:us-east-2:111003490208:topicfilter/$aws/things/ThingOne/shadow/update/delta"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": "arn:aws:iot:us-east-2:111003490208:client/test-*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/ThingOne/shadow/get/accepted",
+            "client/test-*",
+            "topic/$aws/things/ThingOne/shadow/update",
+            "topic/$aws/things/ThingOne/shadow/update/delta",
+            "topic/$aws/things/ThingOne/shadow/get",
+            "topic/$aws/things/ThingOne/shadow/get/rejected",
+            "topic/$aws/things/ThingOne/shadow/update/accepted",
+            "topic/$aws/things/ThingOne/shadow/update/rejected"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/ThingOne/shadow/get/accepted",
+            "client/test-*",
+            "topic/$aws/things/ThingOne/shadow/update",
+            "topic/$aws/things/ThingOne/shadow/update/delta",
+            "topic/$aws/things/ThingOne/shadow/get",
+            "topic/$aws/things/ThingOne/shadow/get/rejected",
+            "topic/$aws/things/ThingOne/shadow/update/accepted",
+            "topic/$aws/things/ThingOne/shadow/update/rejected"
+        ],
+        "type": 0
+    }
+}

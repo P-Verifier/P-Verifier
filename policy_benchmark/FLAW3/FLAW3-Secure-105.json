@@ -1,0 +1,46 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish",
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws-cn:iot:cn-north-1:account:topic/test/topic*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws-cn:iot:cn-north-1:account:topicfilter/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws-cn:iot:cn-north-1:account:client/test*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/test/topic*",
+            "topic/*",
+            "client/test*"
+        ],
+        "NotReceive": [
+            "topic/test/topic*",
+            "topic/*",
+            "client/test*"
+        ],
+        "type": 0
+    }
+}

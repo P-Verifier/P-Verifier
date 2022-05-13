@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect",
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:my_org/my_grp/+/#"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "my_org/my_grp/+/#"
+        ],
+        "NotReceive": [
+            "my_org/my_grp/+/#"
+        ],
+        "type": 0
+    }
+}

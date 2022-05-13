@@ -1,0 +1,60 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Publish",
+            "Resource": [
+                "arn:aws:iot:your-region:00000000000:topic/iotbutton/G030MD0000000001",
+                "arn:aws:iot:your-region:00000000000:topic/iotbutton/G030MD0000000002",
+                "arn:aws:iot:your-region:00000000000:topic/inetbutton/all"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:00000000000:topic/$aws/things/*/shadow/update/accepted",
+                "arn:aws:iot:your-region:00000000000:topic/iotbutton/G030MD0000000001",
+                "arn:aws:iot:your-region:00000000000:topic/iotbutton/G030MD0000000002",
+                "arn:aws:iot:your-region:00000000000:topic/inetbutton/all"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:00000000000:topicfilter/$aws/things/*/shadow/update/accepted",
+                "arn:aws:iot:your-region:00000000000:topic/iotbutton/G030MD0000000001",
+                "arn:aws:iot:your-region:00000000000:topic/iotbutton/G030MD0000000002",
+                "arn:aws:iot:your-region:00000000000:topicfilter/inetbutton/all"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/iotbutton/G030MD0000000001",
+            "topic/iotbutton/G030MD0000000002",
+            "topic/inetbutton/all",
+            "*",
+            "topic/$aws/things/*/shadow/update/accepted"
+        ],
+        "NotReceive": [
+            "topic/iotbutton/G030MD0000000001",
+            "topic/iotbutton/G030MD0000000002",
+            "topic/inetbutton/all",
+            "*",
+            "topic/$aws/things/*/shadow/update/accepted"
+        ],
+        "type": 0
+    }
+}

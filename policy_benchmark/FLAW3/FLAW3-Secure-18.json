@@ -1,0 +1,34 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ELFStmt20160531",
+            "Effect": "Allow",
+            "Action": [
+                "iot:AttachPrincipalPolicy",
+                "iot:AttachThingPrincipal",
+                "iot:CreateKeysAndCertificate",
+                "iot:CreatePolicy",
+                "iot:CreateThing",
+                "iot:CreateTopicRule",
+                "iot:DeleteCertificate",
+                "iot:DeletePolicy",
+                "iot:DeleteThing",
+                "iot:DeleteTopicRule",
+                "iot:DescribeEndpoint",
+                "iot:DetachPrincipalPolicy",
+                "iot:DetachThingPrincipal",
+                "iot:ReplaceTopicRule",
+                "iot:UpdateCertificate",
+                "iot:UpdateThing"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ],
+    "Expected": {
+        "Public": false,
+        "type": 0
+    }
+}

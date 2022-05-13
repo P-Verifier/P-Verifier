@@ -1,0 +1,57 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": "arn:aws:iot:*:*:topic/state"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iotevents:BatchPutMessage"
+            ],
+            "Resource": "arn:aws:iotevents:*:*:input/IoTRmAccelInput"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iotanalytics:BatchPutMessage"
+            ],
+            "Resource": "arn:aws:iotanalytics:*:*:channel/iot_rm_accel_data_channel"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iotanalytics:BatchPutMessage"
+            ],
+            "Resource": "arn:aws:iotanalytics:*:*:channel/iotgatewayrawchannel"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:PutMetricFilter",
+                "logs:PutRetentionPolicy"
+            ],
+            "Resource": [
+                "arn:aws:logs:*:948909324524:log-group:*:log-stream:*",
+                "arn:aws:logs:*:*:*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/state"
+        ],
+        "NotReceive": [
+            "topic/state"
+        ],
+        "DangerousAPI": false,
+        "type": 0
+    }
+}

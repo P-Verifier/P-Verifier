@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:DescribeThing",
+                "iot:ListJobExecutionsForThing",
+                "iot:ListThingGroupsForThing",
+                "iot:ListThingPrincipals"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account-id:/thing/MyThing*"
+            ]
+        }
+    ],
+    "Expected": {
+        "Public": false,
+        "type": 0
+    }
+}

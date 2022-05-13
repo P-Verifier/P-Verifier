@@ -1,0 +1,32 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account:topicfilter/$aws/things/thingName/shadow/update/rejected"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account:topic/$aws/things/thingName/shadow/update/rejected"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/thingName/shadow/update/rejected"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/thingName/shadow/update/rejected"
+        ],
+        "type": 0
+    }
+}

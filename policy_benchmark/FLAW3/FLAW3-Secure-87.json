@@ -1,0 +1,31 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "IoTCWlogsPolicy",
+            "Effect": "Allow",
+            "Action": [
+                "logs:*",
+                "iot:CreateThing",
+                "iot:AttachPolicy",
+                "iot:AttachThingPrincipal",
+                "iot:CreatePolicy",
+                "iot:CreateKeysAndCertificate"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "dynamodPolicy",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:Query",
+                "dynamodb:UpdateItem"
+            ],
+            "Resource": "arn:aws:dynamodb:us-east-2:123456789012:table/TableName"
+        }
+    ],
+    "Expected": {
+        "Public": false,
+        "type": 0
+    }
+}

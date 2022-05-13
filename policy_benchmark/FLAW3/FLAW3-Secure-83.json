@@ -1,0 +1,67 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": "arn:aws:iot:region:account-id:client/core-device-thing-name*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive",
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account-id:topic/$aws/things/core-device-thing-name*/greengrass/health/json",
+                "arn:aws:iot:region:account-id:topic/$aws/things/core-device-thing-name*/greengrassv2/health/json",
+                "arn:aws:iot:region:account-id:topic/$aws/things/core-device-thing-name*/jobs/*",
+                "arn:aws:iot:region:account-id:topic/$aws/things/core-device-thing-name*/shadow/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account-id:topicfilter/$aws/things/core-device-thing-name*/jobs/*",
+                "arn:aws:iot:region:account-id:topicfilter/$aws/things/core-device-thing-name*/shadow/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:AssumeRoleWithCertificate",
+            "Resource": "arn:aws:iot:region:account-id:rolealias/token-exchange-role-alias-name"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "greengrass:GetComponentVersionArtifact",
+                "greengrass:ResolveComponentCandidates",
+                "greengrass:GetDeploymentConfiguration",
+                "greengrass:ListThingGroupsForCoreDevice"
+            ],
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/core-device-thing-name*/jobs/*",
+            "topic/$aws/things/core-device-thing-name*/greengrass/health/json",
+            "topic/$aws/things/core-device-thing-name*/shadow/*",
+            "client/core-device-thing-name*",
+            "topic/$aws/things/core-device-thing-name*/greengrassv2/health/json"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/core-device-thing-name*/jobs/*",
+            "topic/$aws/things/core-device-thing-name*/greengrass/health/json",
+            "topic/$aws/things/core-device-thing-name*/shadow/*",
+            "client/core-device-thing-name*",
+            "topic/$aws/things/core-device-thing-name*/greengrassv2/health/json"
+        ],
+        "type": 0
+    }
+}

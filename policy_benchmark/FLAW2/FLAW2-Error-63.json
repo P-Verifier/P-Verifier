@@ -1,0 +1,36 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Publish",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/certificate/rotation/result/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:AttachPolicy",
+                "lambda:InvokeFunction",
+                "iot:AttachThingPrincipal",
+                "iot:Connect",
+                "iot:DescribeCertificate",
+                "iot:ListAttachedPolicies",
+                "logs:CreateLogGroup",
+                "logs:PutLogEvents",
+                "logs:CreateLogStream",
+                "iot:ListPrincipalThings",
+                "iot:UpdateCertificate",
+                "iot:CreateKeysAndCertificate",
+                "iot:CreateCertificateFromCsr"
+            ],
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false,
+        "type": 0
+    }
+}

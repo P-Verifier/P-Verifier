@@ -1,0 +1,36 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": "arn:aws:iot:us-west-2:xxxxxxxxxxxx:client/player*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Publish",
+            "Resource": "arn:aws:iot:us-west-2:xxxxxxxxxxxx:topic/player*/roll"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Subscribe",
+            "Resource": "arn:aws:iot:us-west-2:xxxxxxxxxxxx:topicfilter/player*/roll"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Receive",
+            "Resource": "arn:aws:iot:us-west-2:xxxxxxxxxxxx:topic/player*/roll"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/player*",
+            "topic/player*/roll"
+        ],
+        "NotReceive": [
+            "client/player*",
+            "topic/player*/roll"
+        ],
+        "type": 0
+    }
+}

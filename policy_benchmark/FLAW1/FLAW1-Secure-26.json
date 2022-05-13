@@ -1,0 +1,47 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:client/android-*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:topicfilter/jkantqunur/*"
+            ]
+        },
+        {
+            "Effect": "Deny",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:topicfilter/jkantqunur/+/cmd",
+                "arn:aws:iot:us-east-1:123456789012:topicfilter/jkantqunur/#",
+                "arn:aws:iot:us-east-1:123456789012:topicfilter/jkantqunur/+/+",
+                "arn:aws:iot:us-east-1:123456789012:topicfilter/jkantqunur/+/#"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:topic/jkantqunur/*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotReceive": "topic/jkantqunur/+/cmd"
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "MQTTConnect",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:iot:us-east-2:1234567890:client/${iot:Certificate.Subject.CommonName}"
+        },
+        {
+            "Sid": "MQTTRead",
+            "Action": [
+                "iot:Subscribe",
+                "iot:Receive"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Sid": "MQTTWrite",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:iot:us-east-2:1234567890:topic/${iot:Certificate.Subject.CommonName}"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/${iot:Certificate.Subject.CommonName}",
+            "*",
+            "client/${iot:Certificate.Subject.CommonName}"
+        ],
+        "NotReceive": [
+            "topic/${iot:Certificate.Subject.CommonName}",
+            "*",
+            "client/${iot:Certificate.Subject.CommonName}"
+        ],
+        "type": 0
+    }
+}

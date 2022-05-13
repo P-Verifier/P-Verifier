@@ -1,0 +1,56 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ConnectUsingClientId",
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": "arn:aws:iot:*:*:client/${iot:Connection.Thing.ThingName}",
+            "Condition": {
+                "Bool": {
+                    "iot:Connection.Thing.IsAttached": "true"
+                }
+            }
+        },
+        {
+            "Sid": "UpdateAndQueryOwnShadow",
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update",
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/get"
+            ]
+        },
+        {
+            "Sid": "ReceiveShadowChanges",
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe",
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:*:*:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*/accepted",
+                "arn:aws:iot:*:*:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*/rejected"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*/rejected",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*/accepted",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/get",
+            "client/${iot:Connection.Thing.ThingName}"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*/rejected",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*/accepted",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/get",
+            "client/${iot:Connection.Thing.ThingName}"
+        ],
+        "type": 0
+    }
+}

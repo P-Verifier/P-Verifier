@@ -1,0 +1,23 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:<b>region</b>:<b>account</b>:client/test-*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/test-*"
+        ],
+        "NotReceive": [
+            "client/test-*"
+        ],
+        "type": 0
+    }
+}
