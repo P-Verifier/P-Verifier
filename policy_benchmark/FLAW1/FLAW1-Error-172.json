@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:*",
+            "Resource": "arn:aws:iot:us-east-1:*:*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "*"
+        ],
+        "NotReceive": [
+            "*"
+        ],
+        "type": 0
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:GetThingShadow",
+                "iot:UpdateThingShadow"
+            ],
+            "Resource": "arn:aws:iot:*:*:thing/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:DescribeEndpoint"
+            ],
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false,
+        "type": 0
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "iot:Publish",
+                "iot:Connect",
+                "iot:Receive",
+                "iot:Subscribe",
+                "iot:GetThingShadow",
+                "iot:DeleteThingShadow",
+                "iot:UpdateThingShadow"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "*"
+        ],
+        "NotReceive": [
+            "*"
+        ],
+        "type": 0
+    }
+}

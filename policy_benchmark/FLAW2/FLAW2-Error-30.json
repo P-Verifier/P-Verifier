@@ -1,0 +1,62 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "CreateTokenExchangeRole",
+            "Effect": "Allow",
+            "Action": [
+                "iam:AttachRolePolicy",
+                "iam:CreatePolicy",
+                "iam:CreateRole",
+                "iam:GetPolicy",
+                "iam:GetRole",
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "arn:aws:iam::account-id:role/GreengrassV2TokenExchangeRole",
+                "arn:aws:iam::account-id:policy/GreengrassV2TokenExchangeRoleAccess"
+            ]
+        },
+        {
+            "Sid": "CreateIoTResources",
+            "Effect": "Allow",
+            "Action": [
+                "iot:AddThingToThingGroup",
+                "iot:AttachPolicy",
+                "iot:AttachThingPrincipal",
+                "iot:CreateKeysAndCertificate",
+                "iot:CreatePolicy",
+                "iot:CreateRoleAlias",
+                "iot:CreateThing",
+                "iot:CreateThingGroup",
+                "iot:DescribeEndpoint",
+                "iot:DescribeRoleAlias",
+                "iot:DescribeThingGroup",
+                "iot:GetPolicy"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "DeployDevTools",
+            "Effect": "Allow",
+            "Action": [
+                "greengrass:CreateDeployment",
+                "iot:CancelJob",
+                "iot:CreateJob",
+                "iot:DeleteThingShadow",
+                "iot:DescribeJob",
+                "iot:DescribeThing",
+                "iot:DescribeThingGroup",
+                "iot:GetThingShadow",
+                "iot:UpdateJob",
+                "iot:UpdateThingShadow"
+            ],
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false,
+        "type": 0
+    }
+}

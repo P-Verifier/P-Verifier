@@ -1,0 +1,45 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": "arn:aws:iot:<b>us-east-2</b>:<b>ACCOUNT</b>:client/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Subscribe",
+            "Resource": [
+                "arn:aws:iot:<b>us-east-2</b>:<b>ACCOUNT</b>:topicfilter/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish",
+                "iot:Receive"
+            ],
+            "Resource": "arn:aws:iot:<b>us-east-2</b>:<b>ACCOUNT</b>:topic/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:UpdateThingShadow",
+                "iot:GetThingShadow",
+                "iot:DeleteThingShadow"
+            ],
+            "Resource": "arn:aws:iot:<b>us-east-2</b>:<b>ACCOUNT</b>:thing/*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/*",
+            "topic/*"
+        ],
+        "NotReceive": [
+            "client/*",
+            "topic/*"
+        ],
+        "type": 0
+    }
+}

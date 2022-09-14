@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:AttachPrincipalPolicy",
+                "iot:CreateKeysAndCertificate"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ],
+    "Expected": {
+        "Public": false,
+        "type": 0
+    }
+}

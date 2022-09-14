@@ -1,0 +1,61 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:client/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/chat/out",
+                "arn:aws:iot:us-east-2:1234567890:topic/chat/stream"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/chat/in/${iot:ClientId}",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/chat/pub/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/chat/in/${iot:ClientId}",
+                "arn:aws:iot:us-east-2:1234567890:topic/chat/pub/*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/*",
+            "topic/chat/pub/*",
+            "topic/chat/stream",
+            "topic/chat/in/${iot:ClientId}",
+            "topic/chat/out"
+        ],
+        "NotReceive": [
+            "client/*",
+            "topic/chat/pub/*",
+            "topic/chat/stream",
+            "topic/chat/in/${iot:ClientId}",
+            "topic/chat/out"
+        ],
+        "type": 0
+    }
+}

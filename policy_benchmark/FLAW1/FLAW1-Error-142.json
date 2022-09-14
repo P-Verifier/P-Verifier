@@ -1,0 +1,31 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "mobileanalytics:PutEvents",
+                "cognito-sync:*",
+                "cognito-identity:*",
+                "iot:Connect",
+                "iot:Publish",
+                "iot:Subscribe",
+                "iot:Receive",
+                "iot:GetThingShadow",
+                "iot:AttachPrincipalPolicy"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "*"
+        ],
+        "NotReceive": [
+            "*"
+        ],
+        "type": 0
+    }
+}

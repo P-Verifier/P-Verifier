@@ -1,0 +1,72 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account-id:topic/$aws/things/core-device-thing-name*-gci/shadow/get"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account-id:topicfilter/$aws/things/core-device-thing-name*-gci/shadow/update/delta",
+                "arn:aws:iot:region:account-id:topicfilter/$aws/things/core-device-thing-name*-gci/shadow/get/accepted"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account-id:topic/$aws/things/core-device-thing-name*-gci/shadow/update/delta",
+                "arn:aws:iot:region:account-id:topic/$aws/things/core-device-thing-name*-gci/shadow/get/accepted"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "greengrass:PutCertificateAuthorities",
+                "greengrass:VerifyClientDeviceIdentity"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "greengrass:VerifyClientDeviceIoTCertificateAssociation"
+            ],
+            "Resource": "arn:aws:iot:region:account-id:thing/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "greengrass:GetConnectivityInfo",
+                "greengrass:UpdateConnectivityInfo"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account-id:thing/core-device-thing-name*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/core-device-thing-name*-gci/shadow/get/accepted",
+            "topic/$aws/things/core-device-thing-name*-gci/shadow/update/delta",
+            "topic/$aws/things/core-device-thing-name*-gci/shadow/get"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/core-device-thing-name*-gci/shadow/get/accepted",
+            "topic/$aws/things/core-device-thing-name*-gci/shadow/update/delta",
+            "topic/$aws/things/core-device-thing-name*-gci/shadow/get"
+        ],
+        "type": 0
+    }
+}

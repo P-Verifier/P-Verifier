@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "iot:Publish",
+            "Effect": "Allow",
+            "Resource": "arn:aws:iot:AWS::Region:AWS::AccountId:topic/iotbutton/IoTButtonDSN"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "arn:aws:iot:AWS::Region:AWS::AccountId:topic/iotbutton/IoTButtonDSN"
+        ],
+        "NotReceive": [
+            "arn:aws:iot:AWS::Region:AWS::AccountId:topic/iotbutton/IoTButtonDSN"
+        ],
+        "type": 0
+    }
+}

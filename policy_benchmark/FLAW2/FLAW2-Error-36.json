@@ -1,0 +1,20 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Resource": "*",
+            "Action": [
+                "iot:Connect",
+                "iot:Publish",
+                "iot:Subscribe",
+                "iot:Receive"
+            ]
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false,
+        "type": 0
+    }
+}

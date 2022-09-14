@@ -1,0 +1,29 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:*",
+                "s3:*",
+                "iam:PassRole",
+                "lambda:CreateFunction",
+                "lambda:GetFunction",
+                "lambda:ListFunctions",
+                "lambda:DeleteFunction",
+                "lambda:AddPermission",
+                "lambda:GetPolicy",
+                "logs:FilterLogEvents",
+                "dynamodb:PutItem",
+                "dynamodb:GetItem",
+                "dynamodb:Scan"
+            ],
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false,
+        "type": 0
+    }
+}

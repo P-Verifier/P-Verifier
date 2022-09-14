@@ -1,0 +1,26 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "iot:Connect",
+                "iot:Publish",
+                "iot:Subscribe",
+                "iot:Receive"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Effect": "Allow"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "*"
+        ],
+        "NotReceive": [
+            "*"
+        ],
+        "type": 0
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:topicfilter/$aws/things/my_sensor/shadow/update/accepted",
+                "arn:aws:iot:your-region:your-aws-account:topicfilter/$aws/things/my_sensor/shadow/update/rejected"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:topic/$aws/things/my_sensor/shadow/update/accepted",
+                "arn:aws:iot:your-region:your-aws-account:topic/$aws/things/my_sensor/shadow/update/rejected"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/my_sensor/shadow/update/rejected",
+            "topic/$aws/things/my_sensor/shadow/update/accepted"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/my_sensor/shadow/update/rejected",
+            "topic/$aws/things/my_sensor/shadow/update/accepted"
+        ],
+        "type": 0
+    }
+}

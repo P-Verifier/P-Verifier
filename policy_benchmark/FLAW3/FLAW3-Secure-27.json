@@ -1,0 +1,66 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": "arn:aws:iot:us-east-2:1234567890:client/${iot:Connection.Thing.ThingName}"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Subscribe",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/accepted",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/rejected",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/delta",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/delete/accepted",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/delete/rejected"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Receive",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/accepted",
+                "arn:aws:iot:us-east-2:1234567890:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/rejected",
+                "arn:aws:iot:us-east-2:1234567890:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/delta",
+                "arn:aws:iot:us-east-2:1234567890:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/delete/accepted",
+                "arn:aws:iot:us-east-2:1234567890:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/delete/rejected"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Publish",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update",
+                "arn:aws:iot:us-east-2:1234567890:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/delete",
+                "arn:aws:iot:us-east-2:1234567890:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/get"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/accepted",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/delta",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/get",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/delete/rejected",
+            "client/${iot:Connection.Thing.ThingName}",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/rejected",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/delete/accepted",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/delete"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/accepted",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/delta",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/get",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/delete/rejected",
+            "client/${iot:Connection.Thing.ThingName}",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/rejected",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/delete/accepted",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/delete"
+        ],
+        "type": 0
+    }
+}

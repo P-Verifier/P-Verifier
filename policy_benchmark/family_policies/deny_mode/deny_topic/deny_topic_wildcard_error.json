@@ -1,0 +1,83 @@
+{
+	"Expected": {
+		"type": 0,
+		"NotReceive": [
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/status"
+		]
+
+	},
+	"Statement1": [
+		{
+			"Action": "iot:Publish",
+			"Effect": "Allow",
+			"Resource": [
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/update",
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/get",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/update",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/get"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Allow",
+			"Resource": [
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/*",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/*"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Deny",
+			"Resource": [
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/cmd",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/cmd"
+			]
+		},
+		{
+			"Action": "iot:Receive",
+			"Effect": "Allow",
+			"Resource": "*"
+		}
+	],
+	"Statement2": [
+		{
+			"Action": "iot:Publish",
+			"Effect": "Allow",
+			"Resource": [
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/update",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/get"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Allow",
+			"Resource": [
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/*",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/*"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Deny",
+			"Resource": [
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/cmd",
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/status",
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/get/accepted",
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/update/accepted"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Deny",
+			"Resource": [
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/cmd",
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/status"
+			]
+		},
+		{
+			"Action": "iot:Receive",
+			"Effect": "Allow",
+			"Resource": "*"
+		}
+	]
+}

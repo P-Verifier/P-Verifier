@@ -1,0 +1,48 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "iot:Publish",
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:iot:us-east-1:1234567890:topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/update",
+                "arn:aws:iot:us-east-1:1234567890:topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/get",
+                "arn:aws:iot:us-east-1:1234567890:topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/update",
+                "arn:aws:iot:us-east-1:1234567890:topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/get"
+            ]
+        },
+        {
+            "Action": "iot:Subscribe",
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:iot:us-east-1:1234567890:topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/+",
+                "arn:aws:iot:us-east-1:1234567890:topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/+/+",
+                "arn:aws:iot:us-east-1:1234567890:topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/+",
+                "arn:aws:iot:us-east-1:1234567890:topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/+/+"
+            ]
+        },
+        {
+            "Action": "iot:Receive",
+            "Effect": "Allow",
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Action": "iot:Receive",
+            "Effect": "Deny",
+            "Resource": [
+                "arn:aws:iot:us-east-1:1234567890:topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/cmd",
+                "arn:aws:iot:us-east-1:1234567890:topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/cmd"
+            ]
+        },
+        {
+            "Action": "iot:Connect",
+            "Resource": "arn:aws:iot:us-east-1:1234567890:client/device1234",
+            "Effect": "Allow"
+        }
+    ],
+    "Expected": {
+        "Public": false
+    }
+}

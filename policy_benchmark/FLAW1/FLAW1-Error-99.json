@@ -1,0 +1,22 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "iot:*",
+                "logs:*"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "*"
+        ],
+        "NotReceive": [
+            "*"
+        ],
+        "type": 0
+    }
+}

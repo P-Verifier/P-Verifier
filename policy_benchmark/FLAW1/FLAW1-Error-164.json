@@ -1,0 +1,46 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish",
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:*:*:topic/fleet/*",
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:*:*:topicfilter/fleet/*",
+                "arn:aws:iot:*:*:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*",
+            "*",
+            "topic/fleet/*"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*",
+            "*",
+            "topic/fleet/*"
+        ],
+        "type": 0
+    }
+}

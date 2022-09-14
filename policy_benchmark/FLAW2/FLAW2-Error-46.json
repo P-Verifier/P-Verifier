@@ -1,0 +1,26 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:UpdateCertificate",
+                "iot:CreatePolicy",
+                "iot:AttachPrincipalPolicy",
+                "iot:CreateThing",
+                "iot:CreateThingType",
+                "iot:DescribeCertificate",
+                "iot:DescribeCaCertificate",
+                "iot:DescribeThing",
+                "iot:DescribeThingType",
+                "iot:GetPolicy"
+            ],
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false,
+        "type": 0
+    }
+}

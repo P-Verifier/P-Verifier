@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Publish",
+            "Resource": "arn:aws:iot: : :topic/"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "arn:aws:iot: : :topic/"
+        ],
+        "NotReceive": [
+            "arn:aws:iot: : :topic/"
+        ],
+        "type": 0
+    }
+}

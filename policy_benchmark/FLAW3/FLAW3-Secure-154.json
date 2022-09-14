@@ -1,0 +1,57 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": "arn:aws:iot:us-east-2:1234567890:client/clientid"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Publish",
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/$aws/things/[thingName]/shadow/update"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/[thingName]/shadow/update/delta",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/[thingName]/shadow/update/accepted",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/[thingName]/shadow/update/rejected",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/[thingName]/shadow/get/accepted",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/[thingName]/shadow/get/rejected",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/[thingName]/shadow/delete/accepted",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/[thingName]/shadow/delete/rejected"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/[thingName]/shadow/update/accepted",
+            "topic/$aws/things/[thingName]/shadow/update/delta",
+            "topic/$aws/things/[thingName]/shadow/update",
+            "topic/$aws/things/[thingName]/shadow/update/rejected",
+            "topic/$aws/things/[thingName]/shadow/get/accepted",
+            "topic/$aws/things/[thingName]/shadow/delete/rejected",
+            "client/clientid",
+            "topic/$aws/things/[thingName]/shadow/get/rejected",
+            "topic/$aws/things/[thingName]/shadow/delete/accepted"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/[thingName]/shadow/update/accepted",
+            "topic/$aws/things/[thingName]/shadow/update/delta",
+            "topic/$aws/things/[thingName]/shadow/update",
+            "topic/$aws/things/[thingName]/shadow/update/rejected",
+            "topic/$aws/things/[thingName]/shadow/get/accepted",
+            "topic/$aws/things/[thingName]/shadow/delete/rejected",
+            "client/clientid",
+            "topic/$aws/things/[thingName]/shadow/get/rejected",
+            "topic/$aws/things/[thingName]/shadow/delete/accepted"
+        ],
+        "type": 0
+    }
+}

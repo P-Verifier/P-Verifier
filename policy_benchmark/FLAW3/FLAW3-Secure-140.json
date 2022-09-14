@@ -1,0 +1,56 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "iot:Connect"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:iot:*:*:client/${iot:Certificate.Subject.CommonName}"
+        },
+        {
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:iot:*:*:topicfilter/$aws/things/${iot:ClientId}/shadow/get/*",
+                "arn:aws:iot:*:*:topicfilter/$aws/things/${iot:ClientId}/shadow/update/*"
+            ]
+        },
+        {
+            "Action": [
+                "iot:Publish"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:ClientId}/shadow/get",
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:ClientId}/shadow/update"
+            ]
+        },
+        {
+            "Action": [
+                "iot:Receive"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/${iot:ClientId}/shadow/get",
+            "topic/$aws/things/${iot:ClientId}/shadow/update",
+            "topic/$aws/things/${iot:ClientId}/shadow/get/*",
+            "topic/$aws/things/${iot:ClientId}/shadow/update/*",
+            "client/${iot:Certificate.Subject.CommonName}"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/${iot:ClientId}/shadow/get",
+            "topic/$aws/things/${iot:ClientId}/shadow/update",
+            "topic/$aws/things/${iot:ClientId}/shadow/get/*",
+            "topic/$aws/things/${iot:ClientId}/shadow/update/*",
+            "client/${iot:Certificate.Subject.CommonName}"
+        ],
+        "type": 0
+    }
+}

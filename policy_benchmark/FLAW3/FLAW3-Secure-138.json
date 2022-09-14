@@ -1,0 +1,46 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish",
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:ap-south-1:77********36:client/sdk-nodejs-*",
+                "arn:aws:iot:ap-south-1:77********36:topic/sensor"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:ap-south-1:77********36:client/sdk-nodejs-*",
+                "arn:aws:iot:ap-south-1:77********36:topicfilter/sensor"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:ap-south-1:77********36:client/sdk-nodejs-*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/sensor",
+            "client/sdk-nodejs-*"
+        ],
+        "NotReceive": [
+            "topic/sensor",
+            "client/sdk-nodejs-*"
+        ],
+        "type": 0
+    }
+}

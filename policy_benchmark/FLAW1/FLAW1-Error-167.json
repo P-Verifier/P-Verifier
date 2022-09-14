@@ -1,0 +1,72 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": "arn:aws:iot:us-east-2:1234567890:client/wss-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:GetThingShadow",
+                "iot:UpdateThingShadow"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:thing/${iot:Connection.Thing.ThingName}"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/accepted",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/get",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/get/accepted",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/cloudcam/${iot:Connection.Thing.ThingName}/notifications",
+                "arn:aws:iot:us-east-2:1234567890:topicfilter/cloudcam/${iot:Connection.Thing.ThingName}/commands"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive",
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:1234567890:topic/$aws/things/+/shadow/update",
+                "arn:aws:iot:us-east-2:1234567890:topic/cloudcam/*/webrtc/setup"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/cloudcam/${iot:Connection.Thing.ThingName}/notifications",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/accepted",
+            "topic/$aws/things/+/shadow/update",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/get/accepted",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/get",
+            "client/wss-*",
+            "topic/cloudcam/${iot:Connection.Thing.ThingName}/commands",
+            "topic/cloudcam/*/webrtc/setup"
+        ],
+        "NotReceive": [
+            "topic/cloudcam/${iot:Connection.Thing.ThingName}/notifications",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/update/accepted",
+            "topic/$aws/things/+/shadow/update",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/get/accepted",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/get",
+            "client/wss-*",
+            "topic/cloudcam/${iot:Connection.Thing.ThingName}/commands",
+            "topic/cloudcam/*/webrtc/setup"
+        ],
+        "type": 0
+    }
+}

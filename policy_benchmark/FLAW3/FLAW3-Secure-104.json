@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "iot:CreateThing",
+                "iot:AttachThingPrincipal",
+                "iot:AttachPrincipalPolicy",
+                "iot:CreatePolicy",
+                "iot:CreateKeysAndCertificate"
+            ],
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "Public": false,
+        "type": 0
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "dynamodb:PutItem",
+            "Resource": "arn:aws:dynamodb:AWS::Region:AWS::AccountId:table/myDynamoDBTable"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:*",
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false,
+        "type": 0
+    }
+}

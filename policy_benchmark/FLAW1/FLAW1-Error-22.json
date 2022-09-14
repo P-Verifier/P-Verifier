@@ -1,0 +1,34 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": "arn:aws:iot:us-east-2:1234567890:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Subscribe",
+            "Resource": "arn:aws:iot:us-east-2:1234567890:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Receive",
+            "Resource": "arn:aws:iot:us-east-2:1234567890:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Publish",
+            "Resource": "arn:aws:iot:us-east-2:1234567890:*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "*"
+        ],
+        "NotReceive": [
+            "*"
+        ],
+        "type": 0
+    }
+}

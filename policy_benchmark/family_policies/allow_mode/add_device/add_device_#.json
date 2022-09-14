@@ -1,0 +1,77 @@
+{
+	"Expected": {
+		"type": 2,
+		"Receive": [
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/cmd",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/status",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/get/*",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/update/*",
+			"lzlxkhguwvrkdgjuviolaqmecowrvcvb/cmd",
+			"lzlxkhguwvrkdgjuviolaqmecowrvcvb/status",
+			"lzlxkhguwvrkdgjuviolaqmecowrvcvb/get/*",
+			"lzlxkhguwvrkdgjuviolaqmecowrvcvb/update/*"
+		],
+		"Publish": [
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/get",
+			"gwyqgsdtclbbvzkvdvudfilaunrvoiew/update",
+			"lzlxkhguwvrkdgjuviolaqmecowrvcvb/get",
+			"lzlxkhguwvrkdgjuviolaqmecowrvcvb/update"
+		]
+	},
+	"Statement1": [
+		{
+			"Action": "iot:Publish",
+			"Effect": "Allow",
+			"Resource": [
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/update",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/get"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Allow",
+			"Resource": [
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/status",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/get/#",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/update/#",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/cmd"
+			]
+		},
+		{
+			"Action": "iot:Receive",
+			"Effect": "Allow",
+			"Resource": "*"
+		}
+	],
+	"Statement2": [
+		{
+			"Action": "iot:Publish",
+			"Effect": "Allow",
+			"Resource": [
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/update",
+				"topic/gwyqgsdtclbbvzkvdvudfilaunrvoiew/get",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/update",
+				"topic/lzlxkhguwvrkdgjuviolaqmecowrvcvb/get"
+			]
+		},
+		{
+			"Action": "iot:Subscribe",
+			"Effect": "Allow",
+			"Resource": [
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/status",
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/get/#",
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/update/#",
+				"topicfilter/gwyqgsdtclbbvzkvdvudfilaunrvoiew/cmd",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/status",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/get/#",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/update/#",
+				"topicfilter/lzlxkhguwvrkdgjuviolaqmecowrvcvb/cmd"
+			]
+		},
+		{
+			"Action": "iot:Receive",
+			"Effect": "Allow",
+			"Resource": "*"
+		}
+	]
+}

@@ -1,0 +1,41 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "mobileanalytics:PutEvents",
+                "cognito-sync:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Subscribe",
+            "Resource": "arn:aws:iot:AWS::Region:AWS::AccountId:topicfilter/${{self:custom.iotPublicTopic}}"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": "arn:aws:iot:AWS::Region:AWS::AccountId:topic/${{self:custom.iotPublicTopic}}"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "arn:aws:iot:AWS::Region:AWS::AccountId:topicfilter/${{self:custom.iotPublicTopic}}",
+            "*"
+        ],
+        "NotReceive": [
+            "arn:aws:iot:AWS::Region:AWS::AccountId:topicfilter/${{self:custom.iotPublicTopic}}",
+            "*"
+        ],
+        "type": 0
+    }
+}

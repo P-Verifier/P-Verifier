@@ -1,0 +1,42 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:client/*"
+            ],
+            "Condition": {
+                "ForAllValues:StringEquals": {
+                    "iot:ConnectAttributes": [
+                        "LastWill"
+                    ]
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish",
+                "iot:RetainPublish"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:123456789012:topic/will"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/*",
+            "topic/will"
+        ],
+        "NotReceive": [
+            "client/*",
+            "topic/will"
+        ],
+        "type": 0
+    }
+}

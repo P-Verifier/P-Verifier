@@ -1,0 +1,32 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account:topicfilter/$aws/things/thingName/shadow/update/delta"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account:topic/$aws/things/thingName/shadow/update/delta"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/thingName/shadow/update/delta"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/thingName/shadow/update/delta"
+        ],
+        "type": 0
+    }
+}

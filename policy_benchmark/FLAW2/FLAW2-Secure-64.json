@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Effect": "Allow",
+            "Condition": {
+                "StringEquals": {
+                    "cognito-identity.amazonaws.com:aud": "cognitoIdentityPoolForApp"
+                },
+                "ForAnyValue:StringLike": {
+                    "cognito-identity.amazonaws.com:amr": "unauthenticated"
+                }
+            },
+            "Principal": {
+                "Federated": "cognito-identity.amazonaws.com"
+            }
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false
+    }
+}

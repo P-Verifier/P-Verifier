@@ -1,0 +1,20 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:DescribeThing",
+                "iot:GetThingShadow",
+                "iot:ListThings"
+            ],
+            "Resource": [
+                "your_aws_iot_arn:thing/*"
+            ]
+        }
+    ],
+    "Expected": {
+        "Public": false,
+        "type": 0
+    }
+}

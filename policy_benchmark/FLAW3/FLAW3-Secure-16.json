@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:<your account id>:topic/*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "arn:aws:iot:us-east-1:<your account id>:topic/*"
+        ],
+        "NotReceive": [
+            "arn:aws:iot:us-east-1:<your account id>:topic/*"
+        ],
+        "type": 0
+    }
+}

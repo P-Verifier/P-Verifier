@@ -1,0 +1,38 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "iot:Connect",
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Action": "iot:Publish",
+            "Effect": "Allow",
+            "Resource": "arn:aws:region:accountId:topic/telemetry/${iot:ClientId}"
+        },
+        {
+            "Action": "iot:Subscribe",
+            "Effect": "Allow",
+            "Resource": "arn:aws:iot:region:accountId:topicfilter/telemetry/${iot:ClientId}"
+        },
+        {
+            "Action": "iot:Receive",
+            "Effect": "Allow",
+            "Resource": "arn:aws:iot:region:accountId:topic/telemetry/${iot:ClientId}"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "arn:aws:region:accountId:topic/telemetry/${iot:ClientId}",
+            "*",
+            "topic/telemetry/${iot:ClientId}"
+        ],
+        "NotReceive": [
+            "arn:aws:region:accountId:topic/telemetry/${iot:ClientId}",
+            "*",
+            "topic/telemetry/${iot:ClientId}"
+        ],
+        "type": 0
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "IoTCreateThingPolicy",
+            "Effect": "Allow",
+            "Action": [
+                "iot:CreateThing",
+                "iot:DescribeThing",
+                "iot:UpdateThing"
+            ],
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "Public": false,
+        "type": 0
+    }
+}

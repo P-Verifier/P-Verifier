@@ -1,0 +1,58 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive",
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-west-2:%s:*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-west-2:771811300480:topic/Sugr/Sense/Joy/Light/Request/JY01pcw4ut9t0",
+                "arn:aws:iot:us-west-2:771811300480:topic/Sugr/Sense/Joy/Light/Request/JY033o00kcrp0"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-west-2:771811300480:topicfilter/Sugr/Sense/Joy/Light/Response/JY01pcw4ut9t0",
+                "arn:aws:iot:us-west-2:771811300480:topicfilter/Sugr/Sense/Joy/Light/Response/JY033o00kcrp0",
+                "arn:aws:iot:us-west-2:771811300480:topicfilter/Sugr/Sense/Joy/Light/Notify/JY01pcw4ut9t0",
+                "arn:aws:iot:us-west-2:771811300480:topicfilter/Sugr/Sense/Joy/Light/Notify/JY033o00kcrp0"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/Sugr/Sense/Joy/Light/Notify/JY01pcw4ut9t0",
+            "arn:aws:iot:us-west-2:%s:*",
+            "topic/Sugr/Sense/Joy/Light/Request/JY033o00kcrp0",
+            "topic/Sugr/Sense/Joy/Light/Response/JY033o00kcrp0",
+            "topic/Sugr/Sense/Joy/Light/Request/JY01pcw4ut9t0",
+            "topic/Sugr/Sense/Joy/Light/Notify/JY033o00kcrp0",
+            "topic/Sugr/Sense/Joy/Light/Response/JY01pcw4ut9t0"
+        ],
+        "NotReceive": [
+            "topic/Sugr/Sense/Joy/Light/Notify/JY01pcw4ut9t0",
+            "arn:aws:iot:us-west-2:%s:*",
+            "topic/Sugr/Sense/Joy/Light/Request/JY033o00kcrp0",
+            "topic/Sugr/Sense/Joy/Light/Response/JY033o00kcrp0",
+            "topic/Sugr/Sense/Joy/Light/Request/JY01pcw4ut9t0",
+            "topic/Sugr/Sense/Joy/Light/Notify/JY033o00kcrp0",
+            "topic/Sugr/Sense/Joy/Light/Response/JY01pcw4ut9t0"
+        ],
+        "type": 0
+    }
+}

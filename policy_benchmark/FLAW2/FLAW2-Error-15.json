@@ -1,0 +1,43 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "iot:connect",
+                "iot:publish",
+                "iot:subscribe",
+                "iot:createTopicRule",
+                "iot:getTopicRule",
+                "iot:DescribeEndpoint"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "s3:getObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::iot-simulator-publicbucket/*",
+                "arn:aws:s3:::S3BucketName/*"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "iam:createPolicy",
+                "iam:createRole",
+                "iam:getRole",
+                "iam:attachRolePolicy",
+                "iam:PassRole"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false,
+        "type": 0
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish",
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:undefined:topic/ingress/d3333b61-yaza32",
+                "arn:aws:iot:us-east-1:undefined:topic/egress/d3333b61-yaza32",
+                "arn:aws:iot:us-east-1:undefined:topic/pubsub/d3333b61-yaza32",
+                "arn:aws:iot:us-east-1:undefined:topic/flashlex/test"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe",
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:undefined:topicfilter/ingress/d3333b61-yaza32",
+                "arn:aws:iot:us-east-1:undefined:topicfilter/egress/d3333b61-yaza32",
+                "arn:aws:iot:us-east-1:undefined:topicfilter/pubsub/d3333b61-yaza32"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-1:undefined:client/d3333b61-yaza32",
+                "arn:aws:iot:us-east-1:undefined:client/d3333b61-yaza32-backend"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/egress/d3333b61-yaza32",
+            "client/d3333b61-yaza32-backend",
+            "topic/flashlex/test",
+            "client/d3333b61-yaza32",
+            "topic/pubsub/d3333b61-yaza32",
+            "topic/ingress/d3333b61-yaza32"
+        ],
+        "NotReceive": [
+            "topic/egress/d3333b61-yaza32",
+            "client/d3333b61-yaza32-backend",
+            "topic/flashlex/test",
+            "client/d3333b61-yaza32",
+            "topic/pubsub/d3333b61-yaza32",
+            "topic/ingress/d3333b61-yaza32"
+        ],
+        "type": 0
+    }
+}

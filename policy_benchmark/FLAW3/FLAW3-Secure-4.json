@@ -1,0 +1,34 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:topic/my_sensor/reading"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:client/my_sensor"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/my_sensor",
+            "topic/my_sensor/reading"
+        ],
+        "NotReceive": [
+            "client/my_sensor",
+            "topic/my_sensor/reading"
+        ],
+        "type": 0
+    }
+}

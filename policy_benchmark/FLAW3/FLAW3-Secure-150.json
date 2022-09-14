@@ -1,0 +1,102 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:*:*:client/${iot:Connection.Thing.ThingName}"
+            ],
+            "Condition": {
+                "Bool": {
+                    "iot:Connection.Thing.IsAttached": "true"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:GetPendingJobExecutions",
+                "iot:GetThingShadow",
+                "iot:DescribeJobExecution",
+                "iot:UpdateJobExecution",
+                "iot:StartNextPendingJobExecution"
+            ],
+            "Resource": [
+                "arn:aws:iot:*:*:thing/${iot:Connection.Thing.ThingName}"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:*:*:topic/dt/ac/company1/area1/${iot:Connection.Thing.ThingName}/*",
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*",
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/get",
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/get/*",
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/*/get",
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/update",
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/*/update",
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:Connection.Thing.ThingName}/defender/metrics/json",
+                "arn:aws:iot:*:*:topic/cmd/${iot:Connection.Thing.ThingName}/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:*:*:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*",
+                "arn:aws:iot:*:*:topicfilter/$aws/things/${iot:Connection.Thing.ThingName}/jobs/*",
+                "arn:aws:iot:*:*:topicfilter/cmd/ac/${iot:Connection.Thing.ThingName}/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive"
+            ],
+            "Resource": [
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*",
+                "arn:aws:iot:*:*:topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/*",
+                "arn:aws:iot:*:*:topic/cmd/ac/${iot:Connection.Thing.ThingName}/*"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/cmd/${iot:Connection.Thing.ThingName}/*",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/*/update",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/defender/metrics/json",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/*/get",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/update",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/get/*",
+            "client/${iot:Connection.Thing.ThingName}",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*",
+            "topic/dt/ac/company1/area1/${iot:Connection.Thing.ThingName}/*",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/get",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/*",
+            "topic/cmd/ac/${iot:Connection.Thing.ThingName}/*"
+        ],
+        "NotReceive": [
+            "topic/cmd/${iot:Connection.Thing.ThingName}/*",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/*/update",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/defender/metrics/json",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/*/get",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/update",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/get/*",
+            "client/${iot:Connection.Thing.ThingName}",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/shadow/*",
+            "topic/dt/ac/company1/area1/${iot:Connection.Thing.ThingName}/*",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/get",
+            "topic/$aws/things/${iot:Connection.Thing.ThingName}/jobs/*",
+            "topic/cmd/ac/${iot:Connection.Thing.ThingName}/*"
+        ],
+        "type": 0
+    }
+}

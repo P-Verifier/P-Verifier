@@ -1,0 +1,63 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/certificates/create/json",
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/certificates/create-from-csr/json",
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/provisioning-templates/templatename/provision/json"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Receive",
+                "iot:Subscribe"
+            ],
+            "Resource": [
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/certificates/create/json/accepted",
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/certificates/create/json/rejected",
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/certificates/create-from-csr/json/accepted",
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/certificates/create-from-csr/json/rejected",
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/provisioning-templates/templatename/provision/json/accepted",
+                "arn:aws:iot:us-east-2:111003490208:topic/$aws/provisioning-templates/templatename/provision/json/rejected"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iot:Connect",
+            "Resource": "arn:aws:iot:us-east-2:111003490208:client/test-*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/certificates/create/json/rejected",
+            "client/test-*",
+            "topic/$aws/certificates/create-from-csr/json/rejected",
+            "topic/$aws/certificates/create/json/accepted",
+            "topic/$aws/provisioning-templates/templatename/provision/json",
+            "topic/$aws/provisioning-templates/templatename/provision/json/rejected",
+            "topic/$aws/certificates/create-from-csr/json/accepted",
+            "topic/$aws/certificates/create-from-csr/json",
+            "topic/$aws/provisioning-templates/templatename/provision/json/accepted",
+            "topic/$aws/certificates/create/json"
+        ],
+        "NotReceive": [
+            "topic/$aws/certificates/create/json/rejected",
+            "client/test-*",
+            "topic/$aws/certificates/create-from-csr/json/rejected",
+            "topic/$aws/certificates/create/json/accepted",
+            "topic/$aws/provisioning-templates/templatename/provision/json",
+            "topic/$aws/provisioning-templates/templatename/provision/json/rejected",
+            "topic/$aws/certificates/create-from-csr/json/accepted",
+            "topic/$aws/certificates/create-from-csr/json",
+            "topic/$aws/provisioning-templates/templatename/provision/json/accepted",
+            "topic/$aws/certificates/create/json"
+        ],
+        "type": 0
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowIotToAssumeRole",
+            "Action": "sts:AssumeRole",
+            "Principal": {
+                "Service": "iot.amazonaws.com"
+            },
+            "Effect": "Allow"
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false
+    }
+}

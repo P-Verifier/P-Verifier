@@ -1,0 +1,28 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account-id:client/${iot:Connection.Thing.ThingName}"
+            ],
+            "Condition": {
+                "Bool": {
+                    "iot:Connection.Thing.IsAttached": "true"
+                }
+            }
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "client/${iot:Connection.Thing.ThingName}"
+        ],
+        "NotReceive": [
+            "client/${iot:Connection.Thing.ThingName}"
+        ],
+        "type": 0
+    }
+}

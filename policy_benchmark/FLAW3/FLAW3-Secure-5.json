@@ -1,0 +1,26 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Publish"
+            ],
+            "Resource": [
+                "arn:aws:iot:your-region:your-aws-account:topic/my_sensor/reading",
+                "arn:aws:iot:your-region:your-aws-account:topic/$aws/things/my_sensor/shadow/update"
+            ]
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/my_sensor/shadow/update",
+            "topic/my_sensor/reading"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/my_sensor/shadow/update",
+            "topic/my_sensor/reading"
+        ],
+        "type": 0
+    }
+}

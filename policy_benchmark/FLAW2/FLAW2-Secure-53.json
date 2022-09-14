@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Principal": {
+                "Service": [
+                    "iotevents.amazonaws.com",
+                    "iot.amazonaws.com"
+                ]
+            }
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false
+    }
+}

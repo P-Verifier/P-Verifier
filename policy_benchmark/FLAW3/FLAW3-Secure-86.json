@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:DescribeThing"
+            ],
+            "Resource": [
+                "arn:aws:iot:<region>:<account-id>:thing/<thing-name>"
+            ]
+        }
+    ],
+    "Expected": {
+        "Public": false,
+        "type": 0
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowManageShadow",
+            "Effect": "Allow",
+            "Action": [
+                "iot:GetThingShadow",
+                "iot:UpdateThingShadow",
+                "iot:DeleteThingShadow",
+                "iot:DescribeThing"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account-id:thing/core-name-*"
+            ]
+        },
+        {
+            "Sid": "AllowManageRuntimeConfig",
+            "Effect": "Allow",
+            "Action": [
+                "greengrass:GetCoreRuntimeConfiguration",
+                "greengrass:UpdateCoreRuntimeConfiguration"
+            ],
+            "Resource": [
+                "arn:aws:iot:region:account-id:thing/core-name"
+            ]
+        }
+    ],
+    "Expected": {
+        "Public": false,
+        "type": 0
+    }
+}

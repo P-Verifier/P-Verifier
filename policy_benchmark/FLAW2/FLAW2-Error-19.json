@@ -1,0 +1,114 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::eu-central-1-greengrass-updates/*",
+                "arn:aws:s3:::us-east-1-greengrass-updates/*",
+                "arn:aws:s3:::ap-northeast-1-greengrass-updates/*",
+                "arn:aws:s3:::us-west-2-greengrass-updates/*",
+                "arn:aws:s3:::ap-southeast-2-greengrass-updates/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:DeleteThingShadow",
+                "iot:GetThingShadow",
+                "iot:UpdateThingShadow"
+            ],
+            "Resource": [
+                "arn:aws:iot:*:*:thing/GG_*",
+                "arn:aws:iot:*:*:thing/*-gcm",
+                "arn:aws:iot:*:*:thing/*-gda",
+                "arn:aws:iot:*:*:thing/*-gci"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:DescribeThing"
+            ],
+            "Resource": [
+                "arn:aws:iot:*:*:thing/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:DescribeCertificate"
+            ],
+            "Resource": [
+                "arn:aws:iot:*:*:cert/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "greengrass:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lambda:GetFunction",
+                "lambda:GetFunctionConfiguration"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:GetSecretValue"
+            ],
+            "Resource": [
+                "arn:aws:secretsmanager:*:*:secret:greengrass-*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*Greengrass*",
+                "arn:aws:s3:::*GreenGrass*",
+                "arn:aws:s3:::*greengrass*",
+                "arn:aws:s3:::*Sagemaker*",
+                "arn:aws:s3:::*SageMaker*",
+                "arn:aws:s3:::*sagemaker*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sagemaker:DescribeTrainingJob"
+            ],
+            "Resource": "arn:aws:sagemaker:*:*:training-job/*"
+        }
+    ],
+    "Expected": {
+        "DangerousAPI": false,
+        "Public": false,
+        "type": 0
+    }
+}

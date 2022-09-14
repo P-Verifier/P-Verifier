@@ -1,0 +1,28 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "ForAllValues:StringEquals": {
+                    "iot:ConnectAttributes": [
+                        "PersistentConnect"
+                    ]
+                }
+            }
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "*"
+        ],
+        "NotReceive": [
+            "*"
+        ],
+        "type": 0
+    }
+}

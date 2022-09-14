@@ -1,0 +1,39 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "MQTTConnect",
+            "Action": [
+                "iot:Connect"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Action": [
+                "iot:Publish",
+                "iot:Receive"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:iot:*:*:topic/$aws/things/*/shadow/*"
+        },
+        {
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:iot:*:*:topicfilter/$aws/things/*/shadow/*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "topic/$aws/things/*/shadow/*",
+            "*"
+        ],
+        "NotReceive": [
+            "topic/$aws/things/*/shadow/*",
+            "*"
+        ],
+        "type": 0
+    }
+}

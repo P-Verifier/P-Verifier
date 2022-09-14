@@ -1,0 +1,38 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "iot:Connect"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Action": [
+                "iot:Publish",
+                "iot:Receive"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:iot:*:*:topic/$aws/things/Door/jobs/*"
+        },
+        {
+            "Action": [
+                "iot:Subscribe"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:iot:*:*:topicfilter/$aws/things/Door/jobs/*"
+        }
+    ],
+    "Expected": {
+        "NotPublish": [
+            "*",
+            "topic/$aws/things/Door/jobs/*"
+        ],
+        "NotReceive": [
+            "*",
+            "topic/$aws/things/Door/jobs/*"
+        ],
+        "type": 0
+    }
+}
