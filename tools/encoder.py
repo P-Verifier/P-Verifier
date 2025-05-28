@@ -1,4 +1,7 @@
 from z3 import *
+import uuid
+import copy
+
 
 class Encoder:
 
@@ -234,3 +237,57 @@ class Encoder:
                 return result
             if effect == "Deny":
                 return Not(result)
+            
+    def deep_encode_with_uuid(
+        self,
+        policy: dict,
+        *,
+        random_uuid: bool = True,
+        uuid_value: str | None = None,
+    ):
+        """
+        Replace every `${iot:Connections.Thing.ThingName}` with a UUID,
+        then delegate to `deep_encode`.
+
+        Parameters
+        ----------
+        policy : dict
+            A policy in the same shape accepted by `deep_encode`.
+        random_uuid : bool, optional (default True)
+            • True  – inject a freshly generated uuid4.  
+            • False – inject the UUID given in `uuid_value`.
+        uuid_value : str, optional
+            The UUID to inject when `random_uuid` is False.
+
+        Returns
+        -------
+        z3.BoolRef
+            The SMT formula produced by `deep_encode` after substitution.
+        """
+        # --- decide which UUID string to use ------------------------------
+        if random_uuid:
+            uuid_str = str(uuid.uuid4())
+        else:
+            if uuid_value is None:
+                raise ValueError(
+                    "uuid_value must be supplied when random_uuid is False"
+                )
+            uuid_str = str(uuid_value)
+
+        # --- substitute without mutating caller’s object ------------------
+        patched_policy = copy.deepcopy(policy)
+
+        for stmt in patched_policy["Statement"]:
+            res = stmt["Resource"]
+            if isinstance(res, str):
+                stmt["Resource"] = res.replace(
+                    "${iot:Connections.Thing.ThingName}", uuid_str
+                )
+            else:  # list of strings
+                stmt["Resource"] = [
+                    r.replace("${iot:Connections.Thing.ThingName}", uuid_str)
+                    for r in res
+                ]
+
+        # --- use the existing deep encoder --------------------------------
+        return self.deep_encode(patched_policy)
